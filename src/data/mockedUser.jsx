@@ -30,6 +30,7 @@ return userActivity
         const {id}= useParams()
         const userAverageSessions= USER_AVERAGE_SESSIONS.find(user=> user.id=== id)
 
+        //To change the data in days
         const weekDays= [ "L","M","M","J","V","S","D" ]
         weekDays.forEach((day, index)=>{
             userAverageSessions.sessions[index].day=day
@@ -41,7 +42,11 @@ return userActivity
     export function GetMockedUserPerformance(){
         const {id}= useParams()
         const UserPerformance= USER_PERFORMANCE.find(user=> user.id===id)
-        
-        
+        const PerformanceKinds =["Cardio", "Energie", "Endurance", "Force", "vitesse", "Intensité" ]
+
+        //TO translate categories in french
+        PerformanceKinds.forEach((kind, index)=>{
+            UserPerformance.data[index].kind= kind
+        })
         return UserPerformance
     }
