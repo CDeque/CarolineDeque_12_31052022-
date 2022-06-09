@@ -1,0 +1,72 @@
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
+import { GetMockedUserSessions } from '../../data/mockedUser';
+import styled from 'styled-components';
+import colors from '../../utils/style/colors';
+//------Line Chart Style------//
+const AverageSessionContainer= styled.div`
+width: 258px;
+height:263px;
+background-color: #FF0000;
+border-radius: 5px;
+margin-left: 4rem;
+margin-top: 2rem;
+`
+const ChartTitle= styled.div`
+color: ${colors.white};
+position: relative;
+font-size: 15px;
+font-weight:500;
+
+width: 170px;
+`
+const Title=styled.p`
+position: absolute;
+top:30px;
+left:30px
+`
+export default function UserAverageSessions(){
+
+
+    const userAverageSessionsData= GetMockedUserSessions()
+
+    
+
+    console.log( userAverageSessionsData.sessions);
+    return(
+<AverageSessionContainer className='average_session_container' >
+  {/* Line chart title */}
+<ChartTitle className="chart_title">
+     <Title>Durée moyenne des sessions</Title>
+  </ChartTitle>
+        <ResponsiveContainer width="100%" height="100%" >
+          
+        <LineChart
+   
+          data={userAverageSessionsData.sessions}
+          margin={{
+            top: 5,
+            right: 10,
+            left: -50,
+            bottom: 15,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
+          <XAxis dataKey="day" tickLine={false} axisLine={false} tick={{fill:"#FFF",fontSize:"14px", fontWeight:"500" }} interval={'preserveStartEnd'} />
+          <YAxis tickLine={false} axisLine={false} tick={{display:"none"}}  domain={["dataMin-30", "dataMax+50"]}  />
+          <Tooltip width={258} height={264}
+          itemStyle={{color:"black", fontSize:10, fontWeight:500}}
+          formatter={(value, name, unit) => [value, unit]}
+          labelStyle={{ display: 'none' }}
+          contentStyle={{ width:"39px", height:"25px",border:"none",textAlign:"center", display: "flex", alignItems: 'center',justifyContent: "center"}}
+          cursor={{ stroke: 'black', strokeOpacity: 0.2, strokeWidth: 40}}
+          offset={70}
+          />
+     
+          <Line type="natural" dataKey="sessionLength" width={258} 
+          stroke="#fff" strokeWidth={1.7} dot={false} activeDot={{ r: 4 }} unit={"min"} name='Durée moyenne des sessions' />
+         
+        </LineChart>
+      </ResponsiveContainer>
+      </AverageSessionContainer>
+    )
+}
