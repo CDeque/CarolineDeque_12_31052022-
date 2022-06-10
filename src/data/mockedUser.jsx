@@ -8,6 +8,9 @@ import {USER_MAIN_DATA,
     export function GetMockedUserData(){
 const {id}= useParams()
         const user = USER_MAIN_DATA.find(user => user.userId === id)
+
+console.log(user.todayScore);
+    
         return user
 
     }
