@@ -5,14 +5,14 @@ import styled from 'styled-components';
 
 
 const ActivityChartContainer= styled.div`
-width: 835px !important;
+width: 902px !important;
 background-color: #FBFBFB !important;
 border-radius: 5px;
 margin-left: 4rem;
 margin-top: 10px;
 padding-top: 60px;
 `
-const ChartTitle= styled.h1`
+const ChartTitle= styled.h2`
 font-size: 15px;
 font-weight: 500;
 margin-left: 30px;
@@ -34,7 +34,7 @@ const changeColorLegend= (value)=>{
 return(
   <ActivityChartContainer className='activity_chart_container'>
     <ChartTitle className='chart_title'>Activité quotidienne</ChartTitle>
-    <ResponsiveContainer width="100%"  height={230}  >
+    <ResponsiveContainer width="100%"  height={230} >
         <BarChart
           width={500}
           height={200}

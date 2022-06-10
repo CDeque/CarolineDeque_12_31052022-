@@ -19,7 +19,9 @@ font-weight:500;
 
 width: 170px;
 `
-const Title=styled.p`
+const Title=styled.h2`
+font-size: 15px;
+font-weight:500;
 position: absolute;
 top:30px;
 left:30px
@@ -28,10 +30,7 @@ export default function UserAverageSessions(){
 
 
     const userAverageSessionsData= GetMockedUserSessions()
-
-    
-
-    console.log( userAverageSessionsData.sessions);
+    // console.log( userAverageSessionsData.sessions);
     return(
 <AverageSessionContainer className='average_session_container' >
   {/* Line chart title */}
