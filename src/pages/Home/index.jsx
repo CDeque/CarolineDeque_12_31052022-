@@ -5,6 +5,7 @@ import {GetMockedUserData} from "../../data/mockedUser"
 import colors from "../../utils/style/colors";
 import DailyActivityChart from "../../Components/DailyActivityChart";
 import UserAverageSessions from "../../Components/LineChartSessions";
+import TodaysScore from "../../Components/TodaysScore";
 import Performance from "../../Components/PerformanceChart";
 import CaloriesIcon from "../../assets/calories-icon.png"
 import ProteinsIcon from "../../assets/proteins-icon.png"
@@ -32,6 +33,7 @@ const user= GetMockedUserData()
            <SmallChartsContainer className="small-chars-container">
             <UserAverageSessions/>
             <Performance/>
+            <TodaysScore/>
            </SmallChartsContainer>
        </section>
 
@@ -76,10 +78,11 @@ display:flex;
 justify-content: space-between;
 `
 const KeyDataSection= styled.section`
-height:600px;
+height:642px;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
+margin-right:2rem;
 `
 const SmallChartsContainer= styled.div`
 display:flex;
