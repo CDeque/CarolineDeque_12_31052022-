@@ -1,24 +1,29 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis,  ResponsiveContainer } from 'recharts';
-import { GetMockedUserPerformance } from '../../data/mockedUser';
+import { GetUserPerformance } from '../../utils/hooks/GetUserPerformance';
 import styled from 'styled-components';
 
-//------Radar Style ------//
-const PerformanceContainer= styled.div`
-width: 258px;
-height:263px;
-background-color: #282D30;
-border-radius: 5px;
-margin-left: 4rem;
-margin-top: 2rem;
-`
+
 
 //------ Performance function ------//
 
+/**
+ * @param {object} user Performance
+ * @returns user Performance graph
+ */
+
 export default function Performance(){
 
-const userPerformanceData= GetMockedUserPerformance()
-// console.log(userPerformanceData.kind);
+const userPerformanceData= GetUserPerformance()
+// console.log(userPerformanceData);
 
+// To check if data or not
+if(userPerformanceData.length===0) return null
+
+  //TO translate categories in french
+  const PerformanceKinds =["Cardio", "Energie", "Endurance", "Force", "vitesse", "Intensité" ]
+    PerformanceKinds.forEach((kind, index)=>{
+    userPerformanceData.data[index].kind= kind
+})
 
     return(
         <PerformanceContainer className="radar_chart_container">
@@ -35,3 +40,13 @@ const userPerformanceData= GetMockedUserPerformance()
       </PerformanceContainer>
     )
 }
+
+//------Radar Style ------//
+const PerformanceContainer= styled.div`
+width: 258px;
+height:263px;
+background-color: #282D30;
+border-radius: 5px;
+margin-left: 4rem;
+margin-top: 2rem;
+`
