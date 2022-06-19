@@ -1,36 +1,29 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
-import { GetMockedUserSessions } from '../../data/mockedUser';
 import styled from 'styled-components';
 import colors from '../../utils/style/colors';
-//------Line Chart Style------//
-const AverageSessionContainer= styled.div`
-width: 258px;
-height:263px;
-background-color: #FF0000;
-border-radius: 5px;
-margin-left: 4rem;
-margin-top: 2rem;
-`
-const ChartTitle= styled.div`
-color: ${colors.white};
-position: relative;
-font-size: 15px;
-font-weight:500;
+import { GetUserSession } from '../../utils/hooks/GetUserSessions';
 
-width: 170px;
-`
-const Title=styled.h2`
-font-size: 15px;
-font-weight:500;
-position: absolute;
-top:30px;
-left:30px
-`
+
+/**
+ * @param {object} user Average Sessions
+ * @returns average sessions graph
+ */
+
 export default function UserAverageSessions(){
 
+    const userAverageSessionsData=GetUserSession()
+  //  console.log( userAverageSessionsData);
 
-    const userAverageSessionsData= GetMockedUserSessions()
-    // console.log( userAverageSessionsData.sessions);
+  // To check if data or not
+  if(userAverageSessionsData.length===0) return null
+
+
+    //To change the data in days
+    const weekDays= [ "L","M","M","J","V","S","D" ]
+    weekDays.forEach((day, index)=>{
+        userAverageSessionsData.sessions[index].day=day
+    })
+
     return(
 <AverageSessionContainer className='average_session_container' >
   {/* Line chart title */}
@@ -69,3 +62,30 @@ export default function UserAverageSessions(){
       </AverageSessionContainer>
     )
 }
+
+
+//------Line Chart Style------//
+
+const AverageSessionContainer= styled.div`
+width: 258px;
+height:263px;
+background-color: #FF0000;
+border-radius: 5px;
+margin-left: 4rem;
+margin-top: 2rem;
+`
+const ChartTitle= styled.div`
+color: ${colors.white};
+position: relative;
+font-size: 15px;
+font-weight:500;
+
+width: 170px;
+`
+const Title=styled.h2`
+font-size: 15px;
+font-weight:500;
+position: absolute;
+top:30px;
+left:30px
+`
