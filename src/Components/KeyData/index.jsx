@@ -1,6 +1,31 @@
 import styled from "styled-components"
 import colors from "../../utils/style/colors"
 
+
+/**
+ * Keydata cards
+ * @param {img} icon
+ * @param {number} number
+ * @param {string} text
+ * @param {string} classname
+ * @returns 
+ */
+export default function KeyData({img,number,text, className}){
+
+
+    return(
+
+        <KeyDataContainer className="keydata_container">
+            <IconContainer className={className}><img src={img} alt="keyData icon" /></IconContainer>
+            <div>
+                <KeydataNumber>{number}</KeydataNumber>
+                <KeydataText>{text}</KeydataText>
+            </div>
+        </KeyDataContainer>
+    )
+}
+
+//------ KeyData style ------//
 const KeyDataContainer= styled.div`
 background-color: ${colors.lightGrey};
 border-radius: 5px;
@@ -41,17 +66,3 @@ font-size:14px;
 font-weight:500;
 color: #74798C;
 `
-export default function KeyData({img,number,text, className}){
-
-
-    return(
-
-        <KeyDataContainer className="keydata_container">
-            <IconContainer className={className}><img src={img} alt="keyData icon" /></IconContainer>
-            <div>
-                <KeydataNumber>{number}</KeydataNumber>
-                <KeydataText>{text}</KeydataText>
-            </div>
-        </KeyDataContainer>
-    )
-}

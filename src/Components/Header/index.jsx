@@ -3,37 +3,11 @@ import styled from "styled-components"
 import { NavLink } from "react-router-dom"
 import colors from "../../utils/style/colors"
 
-const NavContainer= styled.header`
-display: flex;
-align-items: center;
-justify-content: space-between;
-background-color: ${colors.navBar};
-height:91px;
-padding-left: 30px;
 
-
-
-`
-const ImageLogo= styled.img`
-width:178px;
-height:61px;
-
-`
-const NavBar= styled.ul`
-display:flex;
-justify-content: space-around;
-list-style-type: none;
-width:100%;
-`
-const StyledLink= styled(NavLink)`
-text-decoration: none;
-color:${colors.white};
-font-size:24px;
-font-weight: 500;
-
-
-`
-
+/**
+ * 
+ * @returns Header
+ */
 
 
 export default function Header(){
@@ -54,6 +28,31 @@ return(
         </NavBar>
     </NavContainer>
 )
-
-
 }
+
+//------Header style ------//
+
+const NavContainer= styled.header`
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: ${colors.navBar};
+height:91px;
+padding-left: 30px;
+`
+const ImageLogo= styled.img`
+width:178px;
+height:61px;
+`
+const NavBar= styled.ul`
+display:flex;
+justify-content: space-around;
+list-style-type: none;
+width:100%;
+`
+const StyledLink= styled(NavLink)`
+text-decoration: none;
+color:${colors.white};
+font-size:24px;
+font-weight: 500;
+`
