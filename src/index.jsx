@@ -12,7 +12,9 @@ root.render(
       <GlobalStyle/>
       <Header/>
       <Routes>
-        <Route exact path= "/" element={<Home />}/>
+        
+        <Route  path= "/user/:userId" element={<Home />}/>
+      
       </Routes>
     </Router>
     
