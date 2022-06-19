@@ -1,30 +1,29 @@
 
 import { BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { GetMockedUserActivity } from "../../data/mockedUser"
+
+import { GetUserActivity } from '../../utils/hooks/GetUserActivity';
 import styled from 'styled-components';
 
 
-const ActivityChartContainer= styled.div`
-width: 902px !important;
-background-color: #FBFBFB !important;
-border-radius: 5px;
-margin-left: 4rem;
-margin-top: 10px;
-padding-top: 60px;
-`
-const ChartTitle= styled.h2`
-font-size: 15px;
-font-weight: 500;
-margin-left: 30px;
-padding-bottom: 12px;
-`
 
+/**
+ * @param {object} userActivity
+ * @returns userActivity graph
+ */
 
 export default function DailyActivityChart(){
 
-    const userActivityData= GetMockedUserActivity()
-// console.log(userActivityData.sessions);
 
+  const userActivityData= GetUserActivity()
+ 
+  // To check if data or not
+  if(userActivityData.length===0) return null
+
+   // to change the date in the data and show the day only. Creating an array of number & display then according their index
+  const days= ["1","2","3","4","5","6","7"]
+    days.forEach((day, index)=>{
+    userActivityData.sessions[index].day= day
+})
 
 // change the color legend using formatter
 const changeColorLegend= (value)=>{
@@ -100,3 +99,20 @@ return(
       </ActivityChartContainer>
 )
 }
+
+//------ Daily Activity Chart style ------//
+
+const ActivityChartContainer= styled.div`
+width: 902px !important;
+background-color: #FBFBFB !important;
+border-radius: 5px;
+margin-left: 4rem;
+margin-top: 10px;
+padding-top: 60px;s
+`
+const ChartTitle= styled.h2`
+font-size: 15px;
+font-weight: 500;
+margin-left: 30px;
+padding-bottom: 12px;
+`
