@@ -9,7 +9,7 @@ import {USER_MAIN_DATA,
 const {id}= useParams()
         const user = USER_MAIN_DATA.find(user => user.userId === id)
 
-console.log(user.todayScore);
+// console.log(USER_MAIN_DATA);
     
         return user
 

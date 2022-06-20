@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { GetUserData } from "../../utils/hooks/GetUserData";
 import KeyData from "../../Components/KeyData";
 import LeftNav from "../../Components/LeftNav"
-import {GetMockedUserData} from "../../data/mockedUser"
 import colors from "../../utils/style/colors";
 import DailyActivityChart from "../../Components/DailyActivityChart";
 import UserAverageSessions from "../../Components/LineChartSessions";
@@ -13,10 +13,21 @@ import GlucidsIcon from "../../assets/glucids-icon.png"
 import LipidsIcon from "../../assets/lipids-icon.png"
 
 
-export default function Home(){
 
-const user= GetMockedUserData()
-//  console.log(user);
+
+/**
+ * @returns HomePage
+ */
+
+export default function Home(){
+ 
+
+const user= GetUserData()
+//  console.log(user)
+
+// To check if data or not
+if(user.length===0) return null
+
 
    return(
 
@@ -49,6 +60,7 @@ const user= GetMockedUserData()
    )
 }
 
+//------ HomePage Style ------//
 const Main= styled.main`
 display: flex;
 
