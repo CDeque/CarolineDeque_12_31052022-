@@ -15,15 +15,17 @@ export default function DailyActivityChart(){
 
 
   const userActivityData= GetUserActivity()
- 
-  // To check if data or not
-  if(userActivityData.length===0) return null
+  // console.log(userActivityData.sessions);
 
-   // to change the date in the data and show the day only. Creating an array of number & display then according their index
-  const days= ["1","2","3","4","5","6","7"]
-    days.forEach((day, index)=>{
-    userActivityData.sessions[index].day= day
-})
+  // To check if data or not
+  if(userActivityData.length===0)return null
+     // to change the date in the data and show the day only. Creating an array of number & display then according their index
+     const days= ["1","2","3","4","5","6","7"]
+     days.forEach((day, index)=>{
+       userActivityData.sessions[index].day=day
+       return userActivityData.sessions.day
+     })
+
 
 // change the color legend using formatter
 const changeColorLegend= (value)=>{
@@ -37,7 +39,7 @@ return(
         <BarChart
           width={500}
           height={200}
-          data={userActivityData.sessions}
+          data={userActivityData?.sessions}
           margin={{
             top: 5,
             right: 20,
@@ -48,7 +50,7 @@ return(
         >
           <CartesianGrid strokeDasharray="6 4" vertical={false} stroke="#DEDEDE" strokeWidth={1.5}/>
           <XAxis dataKey={"day"} tickLine={false} stroke="#DEDEDE" strokeWidth={2} tick={{fill: "#9B9EAC", fontSize:"14", fontWeight:"500"}} />
-          <YAxis dataKey={"kilogram"} tickCount={3} vertical={false} tickLine={false} axisLine={false} orientation="right" type="number" domain={[75, 85]} yAxisId={0}/>
+          <YAxis dataKey={"kilogram"} tickCount={3} vertical={false} tickLine={false} axisLine={false} orientation="right" type="number" domain={[67, 83]} yAxisId={0}/>
           <YAxis dataKey={"calories"} hide={true}  domain={["dataMin - 100", "dataMax +10"]} yAxisId={1}/>
           <Tooltip   itemStyle={{
                 color: 'white',

@@ -13,16 +13,17 @@ export default function UserAverageSessions(){
 
     const userAverageSessionsData=GetUserSession()
   //  console.log( userAverageSessionsData);
-
+  
   // To check if data or not
-  if(userAverageSessionsData.length===0) return null
-
+  if(userAverageSessionsData.length=== 0)return null
 
     //To change the data in days
     const weekDays= [ "L","M","M","J","V","S","D" ]
     weekDays.forEach((day, index)=>{
         userAverageSessionsData.sessions[index].day=day
+       
     })
+    
 
     return(
 <AverageSessionContainer className='average_session_container' >

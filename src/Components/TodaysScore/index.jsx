@@ -12,12 +12,12 @@ import styled from "styled-components"
 export default function TodaysScore(){
 
     const userData=GetUserData()
-  // console.log(userData);
+  //  console.log(userData);
  
   //to display the score & change it into a percentage, assign color
     const newScore= [{
      
-     value: Math.round((userData.todayScore||userData.score )*100),
+     value: Math.round((userData?.todayScore||userData?.score )*100),
      fill:"#FF0000"
     }]
 // console.log(newScore);
@@ -27,7 +27,7 @@ return(
   <ScoreTitle>Score</ScoreTitle>
 
   {/* text to display the percentage */}
-  <ScoreText className="score_text"><ScoreNumber className='score_number'>{newScore[0].value + "% "}</ScoreNumber><br/>de votre <br/>objectif</ScoreText>
+  <ScoreText className="score_text"><ScoreNumber className='score_number'>{newScore[0]?.value + "% "}</ScoreNumber><br/>de votre <br/>objectif</ScoreText>
 
   <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart cx="50%" cy="50%"innerRadius={80} outerRadius={440}  width={250}

@@ -32,7 +32,7 @@ return(
 const NavContainer= styled.div`
 background-color: ${colors.navBar};
 width: 117px;
-min-height:830px;
+min-height:796px;
 display:flex;
 flex-direction: column;
 justify-content: space-between;

@@ -14,12 +14,12 @@ import styled from 'styled-components';
 export default function Performance(){
 
 const userPerformanceData= GetUserPerformance()
-// console.log(userPerformanceData);
+//  console.log(userPerformanceData);
 
 // To check if data or not
-if(userPerformanceData.length===0) return null
+if(userPerformanceData.length===0)return null
 
-  //TO translate categories in french
+  //To translate categories in french
   const PerformanceKinds =["Cardio", "Energie", "Endurance", "Force", "vitesse", "Intensité" ]
     PerformanceKinds.forEach((kind, index)=>{
     userPerformanceData.data[index].kind= kind

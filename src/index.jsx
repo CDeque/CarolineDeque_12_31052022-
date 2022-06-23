@@ -13,8 +13,10 @@ root.render(
       <Header/>
       <Routes>
         
-        <Route  path= "/user/:userId" element={<Home />}/>
-      
+        <Route  exact path= "/user/:userId" element={<Home />}/>
+ 
+   
+       
       </Routes>
     </Router>
     

@@ -31,15 +31,15 @@ return userActivity
 
     export function GetMockedUserSessions(){
         const {id}= useParams()
-        const userAverageSessions= USER_AVERAGE_SESSIONS.find(user=> user.id=== id)
+        const userAverageSessionsData= USER_AVERAGE_SESSIONS.find(user=> user.id=== id)
 
-        //To change the data in days
-        const weekDays= [ "L","M","M","J","V","S","D" ]
-        weekDays.forEach((day, index)=>{
-            userAverageSessions.sessions[index].day=day
-        })
+       //To change the data in days
+    const weekDays= [ "L","M","M","J","V","S","D" ]
+    weekDays.forEach((day, index)=>{
+        userAverageSessionsData.sessions[index].day=day
+    })
 
-        return userAverageSessions
+        return userAverageSessionsData
     }
 
     export function GetMockedUserPerformance(){

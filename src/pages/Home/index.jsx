@@ -19,15 +19,11 @@ import LipidsIcon from "../../assets/lipids-icon.png"
  * @returns HomePage
  */
 
-export default function Home(){
+export default  function Home(){
  
 
 const user= GetUserData()
 //  console.log(user)
-
-// To check if data or not
-if(user.length===0) return null
-
 
    return(
 
@@ -35,7 +31,7 @@ if(user.length===0) return null
        <LeftNav/> 
        <Div>
            <UserContainer className="user_infos">
-           <UserName className="user_name">Bonjour <Span>{user.userInfos.firstName }</Span></UserName>
+           <UserName className="user_name">Bonjour <Span>{user?.userInfos?.firstName }</Span></UserName>
            <WelcomeText className="welcome_text">Félicitations! vous avez explosé vos objectifs hier 👏</WelcomeText>
            </UserContainer>
            <UserPerformancesContainer className="user_performances_container">
@@ -49,10 +45,10 @@ if(user.length===0) return null
        </section>
 
        <KeyDataSection className="keydata_section">
-           <KeyData img={CaloriesIcon} number={user.keyData.calorieCount+"KCal"} text={"Calories"} className={"calories"}/>
-           <KeyData img={ProteinsIcon} number={user.keyData.proteinCount+"g"} text={"Protéines"}className={"proteins"}/>
-           <KeyData img={GlucidsIcon} number={user.keyData.carbohydrateCount+"g"} text={"Glucides"} className={"glucids"}/>
-           <KeyData img={LipidsIcon} number={user.keyData.lipidCount+"g"} text={"Lipides"} className={"lipids"}/>
+           <KeyData img={CaloriesIcon} number={user?.keyData?.calorieCount+"KCal"} text={"Calories"} className={"calories"}/>
+           <KeyData img={ProteinsIcon} number={user?.keyData?.proteinCount+"g"} text={"Protéines"}className={"proteins"}/>
+           <KeyData img={GlucidsIcon} number={user?.keyData?.carbohydrateCount+"g"} text={"Glucides"} className={"glucids"}/>
+           <KeyData img={LipidsIcon} number={user?.keyData?.lipidCount+"g"} text={"Lipides"} className={"lipids"}/>
        </KeyDataSection>
        </UserPerformancesContainer>
        </Div>
@@ -69,7 +65,7 @@ const Div= styled.div`
 width:100%;
 `
 const UserContainer= styled.div`
-margin: 4rem 6rem 2rem 4rem;
+margin: 2rem 6rem 1rem 4rem;
 height: 100px;
 
 `
@@ -90,11 +86,12 @@ display:flex;
 justify-content: space-between;
 `
 const KeyDataSection= styled.section`
-height:642px;
+height:655px;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
 margin-right:2rem;
+margin-top:-10px;
 `
 const SmallChartsContainer= styled.div`
 display:flex;
