@@ -42,7 +42,9 @@ export default function UserAverageSessions(){
             left: -50,
             bottom: 15,
           }}
+          
         >
+          
           <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
           <XAxis dataKey="day" tickLine={false} axisLine={false} tick={{fill:"#FFF",fontSize:"14px", fontWeight:"500" }} interval={'preserveStartEnd'} />
           <YAxis tickLine={false} axisLine={false} tick={{display:"none"}}  domain={["dataMin-30", "dataMax+50"]}  />
@@ -51,8 +53,8 @@ export default function UserAverageSessions(){
           formatter={(value, name, unit) => [value, unit]}
           labelStyle={{ display: 'none' }}
           contentStyle={{ width:"39px", height:"25px",border:"none",textAlign:"center", display: "flex", alignItems: 'center',justifyContent: "center"}}
-          cursor={{ stroke: 'black', strokeOpacity: 0.2, strokeWidth: 40}}
-          offset={70}
+          cursor={{ stroke: 'black', strokeOpacity: 0.2, strokeWidth: 40, }}
+          offset={20}
           />
      
           <Line type="natural" dataKey="sessionLength" width={258} 
