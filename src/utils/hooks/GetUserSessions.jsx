@@ -11,12 +11,17 @@ const baseUrl= 'http://localhost:3000/user/'
       const {userId}= useParams()
 
       useEffect(()=>{
-           
-             function getData(){
-                             axios.get(baseUrl+userId+"/average-sessions")
-                              .then((res)=> {setData(res.data.data)})
-                              .then((err)=>console.log(err))           
-                  }
+           if(userId==="mocked"){
+              return
+           }
+            async function getData(){
+               try{
+                  await axios.get(baseUrl+userId+"/average-sessions")
+                  .then((res)=> {setData(res.data.data)})
+                }catch(err){
+                  console.log(err, "error occured");
+                  }                          
+                   }
                   getData()  
            
             }, [userId])
@@ -28,19 +33,16 @@ return {data}
 export function GetUserSession(){
       const{userId}=useParams()
       const {data}= useAxios()
-      // console.log(data);
+      
       
   // if "mocked" return mocked data else return useAxios data
   if(userId==="mocked"){
-     const userAverageSessionsData= GetMockedUserSessions()
-  //    console.log("data mockées");
+   const userAverageSessionsData= GetMockedUserSessions()
+
      return userAverageSessionsData
   
    } else{
   
-      const userAverageSessionsData=data
-       console.log("data fetchées");
-
-      return userAverageSessionsData
+      return data
   }
   }

@@ -5,17 +5,26 @@ import { GetMockedUserData} from "../../data/mockedUser";
 
 // to get the data from backEnd repo
 const baseUrl= 'http://localhost:3000/user/'
- export function useAxios() {
 
-      const [data, setData]= useState([])
+ export function useAxios() {
       const {userId}= useParams()
+      const [data, setData]= useState([])
+    
 
       useEffect(()=>{
-           
-             function getData(){
-                             axios.get(baseUrl+userId)
+            
+           if(userId==="mocked"){
+                 return
+           }
+             async function getData(){
+                   try
+                       {   
+                             await axios.get(baseUrl+userId)
                               .then((res)=> {setData(res.data.data)})
-                              .then((err)=>console.log(err))           
+                        }catch(err){
+                              console.log(err, "error occured");
+                        }
+                                        
                   }
                   getData()  
            
@@ -25,24 +34,26 @@ return {data}
 
 }
 
-
-
+/**
+ * 
+ * @returns function to return fetched data or mocked data
+ * according to their id
+ */
 export function GetUserData(){
-      const{userId}=useParams()
+
+    const{userId}=useParams()
       const {data}= useAxios()
-// if "mocked" return mocked data else return useAxios data
-if(userId==="mocked"){
-     const user= GetMockedUserData()
-     console.log("data mockées");
-     return user
-} else{
-      
-      const user=data
-      console.log("data fetchées");
-      return user
 
-}
-
+      if(userId==="mocked"){
+           
+            const user= GetMockedUserData()
+            // console.log("mocked");
+           return user 
+      }else{
+            // console.log("fetch data");
+            return data
+      }
+     
 }
 
 

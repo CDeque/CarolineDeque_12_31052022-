@@ -11,11 +11,16 @@ const baseUrl= 'http://localhost:3000/user/'
       const {userId}= useParams()
 
       useEffect(()=>{
-           
-             function getData(){
-                             axios.get(baseUrl+userId+"/performance")
-                              .then((res)=> {setData(res.data.data)})
-                              .then((err)=>console.log(err))           
+           if(userId==="mocked"){
+              return
+           }
+             async function getData(){
+                try{
+                  axios.get(baseUrl+userId+"/performance")
+                  .then((res)=> {setData(res.data.data)})
+                }catch(err){
+                   console.log(err, "error occured");
+                }        
                   }
                   getData()  
            
@@ -33,14 +38,11 @@ export function GetUserPerformance(){
 // if "mocked" return mocked data else return useAxios data
 if(userId==="mocked"){
    const userPerformanceData= GetMockedUserPerformance()
-//    console.log("data mockées");
+// 
    return userPerformanceData
 
  } else{
-
-    const userPerformanceData=data
-     console.log("data fetchées");
    
-    return userPerformanceData
+    return data
 }
 }
