@@ -29,3 +29,8 @@ Follow these instructions to install and run this project
 - Clone it on your computer.
 - Install the depedencies with the Yarn command.
 - The yarn start command will allow you to run the API on port 3001.
+
+# URL availables in this project:
+  
+  - http://localhost:3001/user/12
+  - http://localhost:3001/user/18
