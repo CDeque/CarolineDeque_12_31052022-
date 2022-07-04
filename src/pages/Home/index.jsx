@@ -1,98 +1,129 @@
 import styled from "styled-components";
 import { GetUserData } from "../../utils/hooks/GetUserData";
 import KeyData from "../../Components/KeyData";
-import LeftNav from "../../Components/LeftNav"
+import LeftNav from "../../Components/LeftNav";
 import colors from "../../utils/style/colors";
 import DailyActivityChart from "../../Components/DailyActivityChart";
 import UserAverageSessions from "../../Components/LineChartSessions";
 import TodaysScore from "../../Components/TodaysScore";
 import Performance from "../../Components/PerformanceChart";
-import CaloriesIcon from "../../assets/calories-icon.png"
-import ProteinsIcon from "../../assets/proteins-icon.png"
-import GlucidsIcon from "../../assets/glucids-icon.png"
-import LipidsIcon from "../../assets/lipids-icon.png"
-
-
-
+import CaloriesIcon from "../../assets/calories-icon.png";
+import ProteinsIcon from "../../assets/proteins-icon.png";
+import GlucidsIcon from "../../assets/glucids-icon.png";
+import LipidsIcon from "../../assets/lipids-icon.png";
 
 /**
  * @returns HomePage
  */
 
-export default  function Home(){
- 
+export default function Home() {
+  const user = GetUserData();
+  //  console.log(user)
 
-const user= GetUserData()
-//  console.log(user)
-
-   return(
-
+  return (
     <Main>
-       <LeftNav/> 
-       <Div>
-           <UserContainer className="user_infos">
-           <UserName className="user_name">Bonjour <Span>{user?.userInfos?.firstName }</Span></UserName>
-           <WelcomeText className="welcome_text">Félicitations! vous avez explosé vos objectifs hier 👏</WelcomeText>
-           </UserContainer>
-           <UserPerformancesContainer className="user_performances_container">
-           <section className="charts_container">
-           <DailyActivityChart/>
-           <SmallChartsContainer className="small-chars-container">
-            <UserAverageSessions/>
-            <Performance/>
-            <TodaysScore/>
-           </SmallChartsContainer>
-       </section>
+      <LeftNav />
+      <Section>
+        <UserContainer className="user_infos">
+          <UserName className="user_name">
+            Bonjour <Span>{user?.userInfos?.firstName}</Span>
+          </UserName>
+          <WelcomeText className="welcome_text">
+            Félicitations! vous avez explosé vos objectifs hier 👏
+          </WelcomeText>
+        </UserContainer>
+        <UserPerformancesContainer className="user_performances_container">
+          <ChartContainerSection className="charts_container">
+            <DailyActivityChart />
 
-       <KeyDataSection className="keydata_section">
-           <KeyData img={CaloriesIcon} number={user?.keyData?.calorieCount+"KCal"} text={"Calories"} className={"calories"}/>
-           <KeyData img={ProteinsIcon} number={user?.keyData?.proteinCount+"g"} text={"Protéines"}className={"proteins"}/>
-           <KeyData img={GlucidsIcon} number={user?.keyData?.carbohydrateCount+"g"} text={"Glucides"} className={"glucids"}/>
-           <KeyData img={LipidsIcon} number={user?.keyData?.lipidCount+"g"} text={"Lipides"} className={"lipids"}/>
-       </KeyDataSection>
-       </UserPerformancesContainer>
-       </Div>
+            <UserAverageSessions />
+            <Performance />
+            <TodaysScore />
+          </ChartContainerSection>
+
+          <KeyDataSection className="keydata_section">
+            <KeyData
+              img={CaloriesIcon}
+              number={user?.keyData?.calorieCount + "KCal"}
+              text={"Calories"}
+              className={"calories"}
+            />
+            <KeyData
+              img={ProteinsIcon}
+              number={user?.keyData?.proteinCount + "g"}
+              text={"Protéines"}
+              className={"proteins"}
+            />
+            <KeyData
+              img={GlucidsIcon}
+              number={user?.keyData?.carbohydrateCount + "g"}
+              text={"Glucides"}
+              className={"glucids"}
+            />
+            <KeyData
+              img={LipidsIcon}
+              number={user?.keyData?.lipidCount + "g"}
+              text={"Lipides"}
+              className={"lipids"}
+            />
+          </KeyDataSection>
+        </UserPerformancesContainer>
+      </Section>
     </Main>
-   )
+  );
 }
 
 //------ HomePage Style ------//
-const Main= styled.main`
-display: flex;
+const Main = styled.main`
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+`;
+const Section = styled.section`
+  padding: 2rem 4rem;
+  @media (max-width: 1340px) {
+    padding: 1rem 2rem;
+  }
+`;
+const UserPerformancesContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
 
-`
-const Div= styled.div`
-width:100%;
-`
-const UserContainer= styled.div`
-margin: 2rem 6rem 1rem 4rem;
-height: 100px;
+  @media (max-width: 1340px) {
+    gap: 1rem 2rem;
+  }
+`;
+const ChartContainerSection = styled.div`
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template: 20rem 19rem / repeat(3, 1fr);
+  gap: 2rem;
 
-`
-const UserName= styled.h1`
-font-size: 48px;
-font-weight: 500;
-`
-const Span= styled.span`
-color: ${colors.primary}
-`
-const WelcomeText= styled.p`
-font-size: 18px;
-font-weight: 400;
-`
-const UserPerformancesContainer= styled.div`
-width:100%;
-display:flex;
-justify-content: space-between;
-`
-const KeyDataSection= styled.section`
-height:655px;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-margin-right:2rem;
-margin-top:-10px;
-`
-const SmallChartsContainer= styled.div`
-display:flex;
-`
+  @media (max-width: 1340px) {
+    grid-template: 18rem 19rem / repeat(3, 1fr);
+    gap: 4rem 1rem;
+  }
+`;
+const UserContainer = styled.div`
+  height: 100px;
+`;
+const UserName = styled.h1`
+  font-size: 48px;
+  font-weight: 500;
+`;
+const Span = styled.span`
+  color: ${colors.primary};
+`;
+const WelcomeText = styled.p`
+  font-size: 18px;
+  font-weight: 400;
+`;
+
+const KeyDataSection = styled.div`
+  height: 655px;
+  position: relative;
+  top: 10px;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2rem;
+`;
