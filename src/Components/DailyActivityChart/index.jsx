@@ -153,7 +153,8 @@ const ActivityChartContainer = styled.div`
 
   @media (max-width: 1340px) {
     max-width: 625px;
-    height: 320px;
+    height: 290px;
+    padding-top: 30px;
 
     .recharts-responsive-container > .recharts-wrapper > .recharts-surface {
       max-width: 625px;

@@ -46,11 +46,14 @@ export default function LeftNav() {
 const NavContainer = styled.div`
   background-color: ${colors.navBar};
   width: 117px;
-  min-height: 796px;
+  height: 796px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 1340px) {
+    height: 690px;
+  }
 `;
 const SportCategoriesContainer = styled.ul`
   height: 40%;
@@ -60,6 +63,9 @@ const SportCategoriesContainer = styled.ul`
   align-items: center;
   justify-content: space-around;
   margin-top: 15rem;
+  @media (max-width: 1340px) {
+    margin-top: 10rem;
+  }
 `;
 const IconContainer = styled.li`
   width: 64px;
@@ -84,4 +90,7 @@ const CopyrightContainer = styled.div`
   display: flex;
   flex-direction: column;
   transform: rotate(270deg);
+  @media (max-width: 1340px) {
+    margin-bottom: 90px;
+  }
 `;

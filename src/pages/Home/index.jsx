@@ -100,8 +100,8 @@ const ChartContainerSection = styled.div`
   gap: 2rem;
 
   @media (max-width: 1340px) {
-    grid-template: 18rem 19rem / repeat(3, 1fr);
-    gap: 4rem 1rem;
+    grid-template: 18rem 16rem / repeat(3, 1fr);
+    gap: 2rem 1rem;
   }
 `;
 const UserContainer = styled.div`
@@ -126,4 +126,8 @@ const KeyDataSection = styled.div`
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   gap: 2rem;
+
+  @media (max-width: 1340px) {
+    height: 577px;
+  }
 `;

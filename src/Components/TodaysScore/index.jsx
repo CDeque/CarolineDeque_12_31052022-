@@ -77,6 +77,7 @@ const TodayScoreContainer = styled.div`
   position: relative;
   @media (max-width: 1340px) {
     width: 198px;
+    height: 215px;
   }
 `;
 const ScoreTitle = styled.h2`
@@ -85,6 +86,10 @@ const ScoreTitle = styled.h2`
   font-weight: 500;
   padding-top: 30px;
   padding-left: 30px;
+  @media (max-width: 1340px) {
+    top: -15px;
+    left: -15px;
+  }
 `;
 const ScoreText = styled.div`
   width: 150px;
@@ -99,7 +104,7 @@ const ScoreText = styled.div`
   left: 54px;
   border-radius: 50%;
   @media (max-width: 1340px) {
-    top: 57px;
+    top: 32px;
     left: 24px;
   }
 `;
