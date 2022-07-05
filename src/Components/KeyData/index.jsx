@@ -42,7 +42,7 @@ const KeyDataContainer = styled.div`
 
   @media (max-width: 1340px) {
     width: 200px;
-    height: 111px;
+    height: 100px;
   }
 `;
 
